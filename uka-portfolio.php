@@ -3,7 +3,7 @@
  * Plugin Name:       Uka Portfolio
  * Plugin URI:        https://ukathemes.com/
  * Description:       Adds Portfolio Post Type to your site.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            UkaThemes
  * Author URI:        https://ukathemes.com/
  * License:           GPL-2.0+
@@ -23,7 +23,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'UKA_PORTFOLIO_VERSION', '1.0.0' );
+define( 'UKA_PORTFOLIO_VERSION', '1.0.1' );
 
 /**
  * The code that runs during plugin activation.
