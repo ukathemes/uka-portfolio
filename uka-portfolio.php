@@ -48,13 +48,13 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-uka-portfolio.php';
  *
  * @since    1.0.0
  */
-function portfolio_settings_link( $settings ) {
+function uka_portfolio_settings_link( $settings ) {
 
 	$settings[] = '<a href="'. get_admin_url( null, 'options-general.php?page=portfolio' ) .'">' . esc_html__( 'Settings', 'uka-portfolio' ) . '</a>';
 	return $settings;
 
 }
-add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'portfolio_settings_link' );
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'uka_portfolio_settings_link' );
 
 /**
  * Begins execution of the plugin.

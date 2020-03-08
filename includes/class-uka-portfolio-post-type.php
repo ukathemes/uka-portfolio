@@ -58,9 +58,9 @@ class Uka_Portfolio_Post_Type {
 			'show_in_rest'    => true,
 		);
 
-		$portfolio_options = get_option( 'portfolio_options' );
+		$options = get_option( 'uka_portfolio_options' );
 
-		if ( 'on' === $portfolio_options[ 'portfolio_comment_status' ] ) {
+		if ( 'on' === $options[ 'portfolio_comment_status' ] ) {
 			$args['supports'] = array_merge(
 				$args['supports'],
 				array( 'comments' )

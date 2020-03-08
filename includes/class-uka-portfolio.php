@@ -60,7 +60,7 @@ class Uka_Portfolio {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-		
+
 		if ( defined( 'UKA_PORTFOLIO_VERSION' ) ) {
 			$this->version = UKA_PORTFOLIO_VERSION;
 		} else {
@@ -88,7 +88,6 @@ class Uka_Portfolio {
 	 * - Uka_Portfolio_i18n. Defines internationalization functionality.
 	 * - Uka_Portfolio_Admin. Defines all hooks for the admin area.
 	 * - Uka_Portfolio_Public. Defines all hooks for the public side of the site.
-	 * - Uka_Portfolio_Customizer. Adding settings to WordPress Customizer.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -162,11 +161,11 @@ class Uka_Portfolio {
 	private function add_portfolio_metaboxes() {
 
 		$prefix = '_uka_';
-		$portfolio_options = get_option( 'portfolio_options' );
+		$options = get_option( 'uka_portfolio_options' );
 
 		$fields = array();
 
-		if ( 'on' === $portfolio_options[ 'portfolio_metaboxes_client' ] ) {
+		if ( 'on' === $options[ 'portfolio_metaboxes_client' ] ) {
 			$fields[] = array(
 				'name' => esc_html__( 'Client:', 'uka-portfolio' ),
 				'desc' => esc_html__( 'Display the client name.', 'uka-portfolio' ),
@@ -176,7 +175,7 @@ class Uka_Portfolio {
 			);
 		}
 
-		if ( 'on' === $portfolio_options[ 'portfolio_metaboxes_services' ] ) {
+		if ( 'on' === $options[ 'portfolio_metaboxes_services' ] ) {
 			$fields[] = array(
 				'name' => esc_html__( 'Services:', 'uka-portfolio' ),
 				'desc' => esc_html__( 'Display the services.', 'uka-portfolio' ),
@@ -186,7 +185,7 @@ class Uka_Portfolio {
 			);
 		}
 
-		if ( 'on' === $portfolio_options[ 'portfolio_metaboxes_external_url' ] ) {
+		if ( 'on' === $options[ 'portfolio_metaboxes_external_url' ] ) {
 			$fields[] = array(
 				'name' => esc_html__( 'Website:', 'uka-portfolio' ),
 				'desc' => esc_html__( 'Link this portfolio item to an external URL.', 'uka-portfolio' ),
@@ -196,7 +195,7 @@ class Uka_Portfolio {
 			);
 		}
 
-		if ( 'on' === $portfolio_options[ 'portfolio_metaboxes_add_to_showcase' ] ) {
+		if ( 'on' === $options[ 'portfolio_metaboxes_add_to_showcase' ] ) {
 			$fields[] = array(
 				'name' => esc_html__( 'Add to the showcase:', 'uka-portfolio' ),
 				'desc' => esc_html__( 'Add item to the showcase page.', 'uka-portfolio' ),

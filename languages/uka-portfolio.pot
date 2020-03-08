@@ -16,12 +16,12 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/class-uka-portfolio-admin.php:208
-#: admin/class-uka-portfolio-admin.php:228
+#: admin/class-uka-portfolio-admin.php:195
+#: admin/class-uka-portfolio-admin.php:215
 msgid " items"
 msgstr ""
 
-#: includes/class-uka-portfolio.php:202
+#: includes/class-uka-portfolio.php:201
 msgid "Add item to the showcase page."
 msgstr ""
 
@@ -50,11 +50,11 @@ msgstr ""
 msgid "Add or remove portfolio tags"
 msgstr ""
 
-#: admin/class-uka-portfolio-admin.php:295
+#: admin/class-uka-portfolio-admin.php:286
 msgid "Add to the showcase"
 msgstr ""
 
-#: includes/class-uka-portfolio.php:201
+#: includes/class-uka-portfolio.php:200
 msgid "Add to the showcase:"
 msgstr ""
 
@@ -78,7 +78,7 @@ msgstr ""
 msgid "Allow comments"
 msgstr ""
 
-#: admin/class-uka-portfolio-admin.php:246
+#: admin/class-uka-portfolio-admin.php:233
 msgid "Allow people to submit comments on portfolio items"
 msgstr ""
 
@@ -94,16 +94,16 @@ msgstr ""
 msgid "Choose from the most used portfolio tags"
 msgstr ""
 
-#: admin/class-uka-portfolio-admin.php:280
+#: admin/class-uka-portfolio-admin.php:268
 msgid "Client"
 msgstr ""
 
-#: includes/class-uka-portfolio.php:171
+#: includes/class-uka-portfolio.php:170
 msgid "Client:"
 msgstr ""
 
 #: admin/class-uka-portfolio-admin.php:133
-#: admin/class-uka-portfolio-admin.php:276
+#: admin/class-uka-portfolio-admin.php:263
 msgid "Custom Meta Boxes Settings"
 msgstr ""
 
@@ -115,11 +115,11 @@ msgstr ""
 msgid "Display Meta Boxes"
 msgstr ""
 
-#: includes/class-uka-portfolio.php:172
+#: includes/class-uka-portfolio.php:171
 msgid "Display the client name."
 msgstr ""
 
-#: includes/class-uka-portfolio.php:182
+#: includes/class-uka-portfolio.php:181
 msgid "Display the services."
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 msgid "https://ukathemes.com/"
 msgstr ""
 
-#: includes/class-uka-portfolio.php:192
+#: includes/class-uka-portfolio.php:191
 msgid "Link this portfolio item to an external URL."
 msgstr ""
 
@@ -233,7 +233,7 @@ msgstr ""
 msgid "Portfolio item scheduled."
 msgstr ""
 
-#: includes/class-uka-portfolio.php:212
+#: includes/class-uka-portfolio.php:211
 msgid "Portfolio Item Settings"
 msgstr ""
 
@@ -246,7 +246,7 @@ msgid "Portfolio pages show at most"
 msgstr ""
 
 #: admin/class-uka-portfolio-admin.php:62
-#: admin/class-uka-portfolio-admin.php:312
+#: admin/class-uka-portfolio-admin.php:304
 msgid "Portfolio Settings"
 msgstr ""
 
@@ -274,7 +274,7 @@ msgstr ""
 msgid "Search Portfolio Tags"
 msgstr ""
 
-#: admin/class-uka-portfolio-admin.php:259
+#: admin/class-uka-portfolio-admin.php:246
 msgid ""
 "Select the meta boxes that will be displayed on the portfolio item page."
 msgstr ""
@@ -287,25 +287,25 @@ msgstr ""
 msgid "Separate portfolio tags with commas"
 msgstr ""
 
-#: admin/class-uka-portfolio-admin.php:285
+#: admin/class-uka-portfolio-admin.php:274
 msgid "Services"
 msgstr ""
 
-#: includes/class-uka-portfolio.php:181
+#: includes/class-uka-portfolio.php:180
 msgid "Services:"
 msgstr ""
 
-#: uka-portfolio.php:54
+#: uka-portfolio.php:53
 msgid "Settings"
 msgstr ""
 
-#: admin/class-uka-portfolio-admin.php:189
+#: admin/class-uka-portfolio-admin.php:176
 msgid ""
 "Specify the number of portfolio items that you would like to see on the "
 "portfolio archive pages and on the portfolio showcase page."
 msgstr ""
 
-#: public/class-uka-portfolio-public.php:57
+#: public/class-uka-portfolio-public.php:25
 msgid "Tag: "
 msgstr ""
 
@@ -344,10 +344,10 @@ msgstr ""
 msgid "View Portfolio Item"
 msgstr ""
 
-#: admin/class-uka-portfolio-admin.php:290
+#: admin/class-uka-portfolio-admin.php:280
 msgid "Website"
 msgstr ""
 
-#: includes/class-uka-portfolio.php:191
+#: includes/class-uka-portfolio.php:190
 msgid "Website:"
 msgstr ""

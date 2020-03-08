@@ -63,10 +63,10 @@ class Uka_Portfolio_Admin {
 			esc_html__( 'Portfolio', 'uka-portfolio' ),
 			'manage_options',
 			'portfolio',
-			array( $this, 'portfolio_settings_page' )
+			array( $this, 'settings_page' )
 		);
 
-		add_action( 'admin_init', array( $this, 'portfolio_register_settings' ) );
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
 	}
 
 	/**
@@ -74,15 +74,15 @@ class Uka_Portfolio_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function portfolio_register_settings() {
+	public function register_settings() {
 
-		register_setting( 'portfolio_settings_group', 'portfolio_options', 'portfolio_sanitize_options' );
+		register_setting( 'uka_portfolio_settings_group', 'uka_portfolio_options', 'sanitize_options' );
 
 		// Add reading settings section
 		add_settings_section(
 			'reading_settings',
 			esc_html__( 'Reading Settings', 'uka-portfolio' ),
-			array( $this, 'portfolio_reading_settings_section'),
+			array( $this, 'reading_settings_section'),
 			'portfolio'
 		);
 
@@ -131,33 +131,20 @@ class Uka_Portfolio_Admin {
 		add_settings_section(
 			'metaboxes_settings',
 			esc_html__( 'Custom Meta Boxes Settings', 'uka-portfolio' ),
-			array( $this, 'portfolio_metaboxes_settings_section'),
+			array( $this, 'metaboxes_settings_section'),
 			'portfolio'
 		);
 
 		add_settings_field(
 			'portfolio_metaboxes',
 			esc_html__( 'Display Meta Boxes', 'uka-portfolio' ),
-			array( $this, 'portfolio_metaboxes_field'),
+			array( $this, 'metaboxes_field'),
 			'portfolio',
 			'metaboxes_settings',
 			array(
 				'label_for' => 'portfolio_metaboxes',
 			)
 		);
-
-		// Set default plugin parameters
-		$default_options = array(
-			'portfolio_items_per_page' => 10,
-			'showcase_items_per_page' => 10,
-			'portfolio_comment_status' => 'off',
-			'portfolio_metaboxes_client' => 'off',
-			'portfolio_metaboxes_services' => 'off',
-			'portfolio_metaboxes_external_url' => 'off',
-			'portfolio_metaboxes_add_to_showcase' => 'on',
-		);
-
-		add_option( 'portfolio_options', $default_options );
 
 	}
 
@@ -166,7 +153,7 @@ class Uka_Portfolio_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function portfolio_sanitize_options( $input ) {
+	public function sanitize_options( $input ) {
 
 		$input[ 'portfolio_items_per_page' ] = absint( $input[ 'portfolio_items_per_page' ] );
 		$input[ 'showcase_items_per_page' ] = absint( $input[ 'showcase_items_per_page' ] );
@@ -185,7 +172,7 @@ class Uka_Portfolio_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function portfolio_reading_settings_section() {
+	public function reading_settings_section() {
 		echo '<p>' . esc_html__( 'Specify the number of portfolio items that you would like to see on the portfolio archive pages and on the portfolio showcase page.', 'uka-portfolio' ) . '</p>';
 	}
 
@@ -196,14 +183,14 @@ class Uka_Portfolio_Admin {
 	 */
 	public function portfolio_items_per_page_field() {
 
-		$portfolio_options = get_option( 'portfolio_options' );
+		$options = get_option( 'uka_portfolio_options' );
 
-		if ( empty( $portfolio_options[ 'portfolio_items_per_page' ] ) ) {
-			$portfolio_options[ 'portfolio_items_per_page' ] = 10;
+		if ( empty( $options[ 'portfolio_items_per_page' ] ) ) {
+			$options[ 'portfolio_items_per_page' ] = 10;
 		}
 
 		?>
-		<input name="portfolio_options[portfolio_items_per_page]" type="number" step="1" min="1" id="portfolio_items_per_page" value="<?php echo esc_attr( $portfolio_options[ 'portfolio_items_per_page' ] ) ?>" class="small-text">
+		<input name="uka_portfolio_options[portfolio_items_per_page]" type="number" step="1" min="1" id="portfolio_items_per_page" value="<?php echo esc_attr( $options[ 'portfolio_items_per_page' ] ) ?>" class="small-text">
 		<?php
 		esc_html_e( ' items', 'uka-portfolio' );
 
@@ -216,14 +203,14 @@ class Uka_Portfolio_Admin {
 	 */
 	public function showcase_items_per_page_field() {
 
-		$portfolio_options = get_option( 'portfolio_options' );
+		$options = get_option( 'uka_portfolio_options' );
 
-		if ( empty( $portfolio_options[ 'showcase_items_per_page' ] ) ) {
-			$portfolio_options[ 'showcase_items_per_page' ] = 10;
+		if ( empty( $options[ 'showcase_items_per_page' ] ) ) {
+			$options[ 'showcase_items_per_page' ] = 10;
 		}
 
 		?>
-		<input name="portfolio_options[showcase_items_per_page]" type="number" step="1" min="1" id="showcase_items_per_page" value="<?php echo esc_attr( $portfolio_options[ 'showcase_items_per_page' ] ) ?>" class="small-text">
+		<input name="uka_portfolio_options[showcase_items_per_page]" type="number" step="1" min="1" id="showcase_items_per_page" value="<?php echo esc_attr( $options[ 'showcase_items_per_page' ] ) ?>" class="small-text">
 		<?php
 		esc_html_e( ' items', 'uka-portfolio' );
 
@@ -236,16 +223,16 @@ class Uka_Portfolio_Admin {
 	 */
 	public function portfolio_comment_status_field() {
 
-		$portfolio_options = get_option( 'portfolio_options' );
-		$value = $portfolio_options[ 'portfolio_comment_status' ];
+		$options = get_option( 'uka_portfolio_options' );
+		$value = $options[ 'portfolio_comment_status' ];
 
 		$html  = '<fieldset>';
 		$html  .= '<label for="portfolio_comment_status">';
-		$html  .= '<input type="hidden" name="portfolio_options[portfolio_comment_status]" value="off" />';
-		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="portfolio_comment_status" name="portfolio_options[portfolio_comment_status]" value="on" %1$s />', checked( $value, 'on', false ) );
+		$html  .= '<input type="hidden" name="uka_portfolio_options[portfolio_comment_status]" value="off" />';
+		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="portfolio_comment_status" name="uka_portfolio_options[portfolio_comment_status]" value="on" %1$s />', checked( $value, 'on', false ) );
 		$html  .= sprintf( '%1$s</label>', esc_html__( 'Allow people to submit comments on portfolio items', 'uka-portfolio' ) );
 		$html  .= '</fieldset>';
-	
+
 		echo $html;
 
 	}
@@ -255,7 +242,7 @@ class Uka_Portfolio_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function portfolio_metaboxes_settings_section() {
+	public function metaboxes_settings_section() {
 		echo '<p>' . esc_html__( 'Select the meta boxes that will be displayed on the portfolio item page.', 'uka-portfolio' ) . '</p>';
 	}
 
@@ -264,38 +251,43 @@ class Uka_Portfolio_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function portfolio_metaboxes_field() {
+	public function metaboxes_field() {
 
-		$portfolio_options = get_option( 'portfolio_options' );
-		$client = $portfolio_options[ 'portfolio_metaboxes_client' ];
-		$services = $portfolio_options[ 'portfolio_metaboxes_services' ];
-		$external_url = $portfolio_options[ 'portfolio_metaboxes_external_url' ];
-		$add_to_showcase = $portfolio_options[ 'portfolio_metaboxes_add_to_showcase' ];
+		$options = get_option( 'uka_portfolio_options' );
+		$client = $options[ 'portfolio_metaboxes_client' ];
+		$services = $options[ 'portfolio_metaboxes_services' ];
+		$external_url = $options[ 'portfolio_metaboxes_external_url' ];
+		$add_to_showcase = $options[ 'portfolio_metaboxes_add_to_showcase' ];
 
 		$html  = '<fieldset>';
 		$html  .= sprintf( '<legend class="screen-reader-text"><span>%1$s</span></legend>', esc_html__( 'Custom Meta Boxes Settings', 'uka-portfolio' ) );
+
 		$html  .= '<label for="portfolio_metaboxes_client">';
-		$html  .= '<input type="hidden" name="portfolio_options[portfolio_metaboxes_client]" value="off" />';
-		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="portfolio_metaboxes_client" name="portfolio_options[portfolio_metaboxes_client]" value="on" %1$s />', checked( $client, 'on', false ) );
+		$html  .= '<input type="hidden" name="uka_portfolio_options[portfolio_metaboxes_client]" value="off" />';
+		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="portfolio_metaboxes_client" name="uka_portfolio_options[portfolio_metaboxes_client]" value="on" %1$s />', checked( $client, 'on', false ) );
 		$html  .= sprintf( '%1$s</label>', esc_html__( 'Client', 'uka-portfolio' ) );
 		$html  .= '<br />';
+
 		$html  .= '<label for="portfolio_metaboxes_services">';
-		$html  .= '<input type="hidden" name="portfolio_options[portfolio_metaboxes_services]" value="off" />';
-		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="portfolio_metaboxes_services" name="portfolio_options[portfolio_metaboxes_services]" value="on" %1$s />', checked( $services, 'on', false ) );
+		$html  .= '<input type="hidden" name="uka_portfolio_options[portfolio_metaboxes_services]" value="off" />';
+		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="portfolio_metaboxes_services" name="uka_portfolio_options[portfolio_metaboxes_services]" value="on" %1$s />', checked( $services, 'on', false ) );
 		$html  .= sprintf( '%1$s</label>', esc_html__( 'Services', 'uka-portfolio' ) );
 		$html  .= '<br />';
+
 		$html  .= '<label for="portfolio_metaboxes_external_url">';
-		$html  .= '<input type="hidden" name="portfolio_options[portfolio_metaboxes_external_url]" value="off" />';
-		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="portfolio_metaboxes_external_url" name="portfolio_options[portfolio_metaboxes_external_url]" value="on" %1$s />', checked( $external_url, 'on', false ) );
+		$html  .= '<input type="hidden" name="uka_portfolio_options[portfolio_metaboxes_external_url]" value="off" />';
+		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="portfolio_metaboxes_external_url" name="uka_portfolio_options[portfolio_metaboxes_external_url]" value="on" %1$s />', checked( $external_url, 'on', false ) );
 		$html  .= sprintf( '%1$s</label>', esc_html__( 'Website', 'uka-portfolio' ) );
 		$html  .= '<br />';
+
 		$html  .= '<label for="portfolio_metaboxes_add_to_showcase">';
-		$html  .= '<input type="hidden" name="portfolio_options[portfolio_metaboxes_add_to_showcase]" value="off" />';
-		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="portfolio_metaboxes_add_to_showcase" name="portfolio_options[portfolio_metaboxes_add_to_showcase]" value="on" %1$s />', checked( $add_to_showcase, 'on', false ) );
+		$html  .= '<input type="hidden" name="uka_portfolio_options[portfolio_metaboxes_add_to_showcase]" value="off" />';
+		$html  .= sprintf( '<input type="checkbox" class="checkbox" id="portfolio_metaboxes_add_to_showcase" name="uka_portfolio_options[portfolio_metaboxes_add_to_showcase]" value="on" %1$s />', checked( $add_to_showcase, 'on', false ) );
 		$html  .= sprintf( '%1$s</label>', esc_html__( 'Add to the showcase', 'uka-portfolio' ) );
 		$html  .= '<br />';
+
 		$html  .= '</fieldset>';
-	
+
 		echo $html;
 
 	}
@@ -305,7 +297,7 @@ class Uka_Portfolio_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function portfolio_settings_page() {
+	public function settings_page() {
 
 		?>
 		<div class="wrap">
@@ -313,7 +305,7 @@ class Uka_Portfolio_Admin {
 
 			<form method="post" action="options.php">
 				<?php
-				settings_fields( 'portfolio_settings_group' );
+				settings_fields( 'uka_portfolio_settings_group' );
 				do_settings_sections( 'portfolio' );
 				submit_button();
 				?>
@@ -330,8 +322,8 @@ class Uka_Portfolio_Admin {
 	 */
 	public function portfolio_items_per_page( $query ) {
 
-		$portfilio_options = get_option( 'portfolio_options' );
-		$portfolio_items_per_page = $portfilio_options[ 'portfolio_items_per_page' ];
+		$_options = get_option( 'uka_portfolio_options' );
+		$portfolio_items_per_page = $options[ 'portfolio_items_per_page' ];
 
 		if ( ! is_admin() && $query->is_main_query() ) {
 			if ( $query->is_archive && $query->is_post_type_archive( 'portfolio' ) ) {
