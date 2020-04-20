@@ -71,21 +71,21 @@ class Uka_Portfolio_Metaboxes {
 			switch ( $field[ 'type' ] ) {
 				case 'text':
 					echo '<td>';
-					echo '<input type="text" id="' . $field[ 'id' ] . '" name="uka_meta[ ' . $field['id'] . ' ]" value="' . ( $meta ? $meta : $field[ 'std' ] ) . '" size="30" />';
+					echo '<input type="text" id="' . $field[ 'id' ] . '" name="uka_meta[' . $field['id'] . ']" value="' . ( $meta ? $meta : $field[ 'std' ] ) . '" size="30" />';
 					echo '<p class="description">' . $field['desc'] . '</p>';
 					echo '</td>';
 					break;
 
 				case 'textarea':
 					echo '<td>';
-					echo '<textarea id="' . $field[ 'id' ] . '" name="uka_meta[ ' . $field['id'] . ' ]" rows="7" cols="5">' . ( $meta ? $meta : $field[ 'std' ] ) . '</textarea>';
+					echo '<textarea id="' . $field[ 'id' ] . '" name="uka_meta[' . $field['id'] . ']" rows="7" cols="5">' . ( $meta ? $meta : $field[ 'std' ] ) . '</textarea>';
 					echo '<p class="description">' . $field[ 'desc' ] . '</p>';
 					echo '</td>';
 					break;
 
 				case 'select':
 					echo '<td>';
-					echo '<select id="' . $field[ 'id' ] . '" name="uka_meta[ ' . $field['id'] . ' ]">';
+					echo '<select id="' . $field[ 'id' ] . '" name="uka_meta[' . $field['id'] . ']">';
 					foreach ( $field[ 'options' ] as $key => $option ) {
 						echo '<option value="' . $key . '"';
 						if ( $meta ) {
@@ -110,7 +110,7 @@ class Uka_Portfolio_Metaboxes {
 					echo '<ul class="radio-list">';
 					foreach ( $field[ 'options' ] as $key => $option ) {
 						echo '<li>';
-						echo '<input type="radio" id="' . $field[ 'id' ] . $i . '" name="uka_meta[ ' . $field['id'] .' ]" value="' . $key . '"';
+						echo '<input type="radio" id="' . $field[ 'id' ] . $i . '" name="uka_meta[' . $field['id'] .']" value="' . $key . '"';
 						if ( $meta ) {
 							if ( $meta == $key ) {
 								echo ' checked="checked"';
@@ -142,8 +142,8 @@ class Uka_Portfolio_Metaboxes {
 							$val = ' checked="checked"';
 						}
 					}
-					echo '<input type="hidden" name="uka_meta[ ' . $field['id'] . ' ]" value="off" />
-								<input type="checkbox" id="' . $field[ 'id' ] . '" name="uka_meta[ ' . $field['id'] . ' ]" value="on"' . $val . ' />
+					echo '<input type="hidden" name="uka_meta[' . $field['id'] . ']" value="off" />
+								<input type="checkbox" id="' . $field[ 'id' ] . '" name="uka_meta[' . $field['id'] . ']" value="on"' . $val . ' />
 								<label for="' . $field[ 'id' ] . '">' . $field[ 'desc' ] . '</label>';
 					echo '</td>';
 					break;
@@ -182,7 +182,7 @@ class Uka_Portfolio_Metaboxes {
 		foreach ( $_POST[ 'uka_meta' ] as $key => $val ) {
 			update_post_meta( $post_id, $key, $val );
 		}
-		
+
 	}
 
 }
