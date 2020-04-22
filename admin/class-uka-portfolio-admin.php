@@ -322,7 +322,7 @@ class Uka_Portfolio_Admin {
 	 */
 	public function portfolio_items_per_page( $query ) {
 
-		$_options = get_option( 'uka_portfolio_options' );
+		$options = get_option( 'uka_portfolio_options' );
 		$portfolio_items_per_page = $options[ 'portfolio_items_per_page' ];
 
 		if ( ! is_admin() && $query->is_main_query() ) {

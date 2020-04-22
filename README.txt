@@ -2,8 +2,8 @@
 Contributors: UkaThemes
 Tags: portfolio, wordpress
 Requires at least: 4.7
-Tested up to: 5.3
-Stable tag: 1.0.2
+Tested up to: 5.4
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,9 @@ The quickest method for installing the importer is:
 3. Click "Activate" to use plugin right away.
 
 == Changelog ==
+
+= 1.0.3 - April 22 2020 =
+* Small fix.
 
 = 1.0.2 - April 20 2020 =
 * Some small fixes.
