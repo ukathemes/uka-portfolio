@@ -318,15 +318,15 @@ class Uka_Portfolio_Admin {
 	/**
 	 * Changes the number of portfolio items on archive pages.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.4
 	 */
 	public function portfolio_items_per_page( $query ) {
 
 		$options = get_option( 'uka_portfolio_options' );
 		$portfolio_items_per_page = $options[ 'portfolio_items_per_page' ];
 
-		if ( ! is_admin() && $query->is_main_query() ) {
-			if ( $query->is_archive && $query->is_post_type_archive( 'portfolio' ) ) {
+		if ( ! is_admin() && $query->is_main_query() && $query->is_archive ) {
+			if ( $query->is_post_type_archive( 'portfolio' ) || $query->is_tax( 'portfolio-category' ) || $query->is_tax( 'portfolio-tag' ) ) {
 				$query->set( 'posts_per_page', $portfolio_items_per_page );
 			}
 		}

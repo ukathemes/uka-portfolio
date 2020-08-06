@@ -3,7 +3,7 @@ Contributors: UkaThemes
 Tags: portfolio, wordpress
 Requires at least: 4.7
 Tested up to: 5.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -23,6 +23,9 @@ The quickest method for installing the importer is:
 3. Click "Activate" to use plugin right away.
 
 == Changelog ==
+
+= 1.0.4 - August 06 2020 =
+* Fixed the number of posts per page for portfolio archive pages.
 
 = 1.0.3 - April 22 2020 =
 * Small fix.
